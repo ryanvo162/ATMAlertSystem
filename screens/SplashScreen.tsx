@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 
 
-export default function Splash({ navigation }: { navigation: any }) {
+export default function SplashScreen({ navigation }: { navigation: any }) {
 
     useEffect(() => {
         async function prepare() {
             try {
-                await new Promise(() => setTimeout(() => { navigation.replace('Home') }, 2000));
+                await new Promise(() => setTimeout(() => { navigation.replace('Login') }, 2000));
             } catch (e) {
                 console.warn(e);
             }
