@@ -1,7 +1,30 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Alert, Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { signInWithEmailAndPassword } from "firebase/auth";
+import auth from '../database/Authentication';
+
 export default function LoginScreen({ navigation }: { navigation: any }) {
+
+    const [getEmail, setEmail] = useState('')
+    const [getPassword, setPassword] = useState('')
+
+    const signIn = async () => {
+        await signInWithEmailAndPassword(auth, getEmail, getPassword)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                navigation.replace('Search')
+                Alert.alert('Đăng nhập thành công')
+                // ...
+            })
+            .catch((error) => {
+                Alert.alert('Try Again')
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+    }
+
     return (
         <View style={styles.container}>
 
@@ -21,14 +44,14 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
                 placeholder="Email đăng nhập"
                 placeholderTextColor='#a5b5c9'
                 selectionColor="#595959"
-            // onChangeText={onChangeText}
-            // value={text}
+                onChangeText={setEmail}
+                value={getEmail}
             />
             <TextInput
                 style={styles.input}
                 placeholderTextColor='#a5b5c9'
-                // onChangeText={onChangeNumber}
-                // value={number}
+                onChangeText={setPassword}
+                value={getPassword}
                 placeholder="Mật khẩu"
                 secureTextEntry={true}
                 selectionColor="#595959"
@@ -36,7 +59,7 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
 
             <Text style={styles.forgotPassword}>Quên mật khẩu</Text>
 
-            <Pressable style={styles.loginButton} onPress={() => navigation.replace('Search')}>
+            <Pressable style={styles.loginButton} onPress={() => signIn()}>
                 <Text style={styles.loginButtonText}>Đăng nhập</Text>
             </Pressable>
         </View>

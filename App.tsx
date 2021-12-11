@@ -11,6 +11,9 @@ import SplashScreen from './screens/SplashScreen';
 import SearchScreen from './screens/SearchScreen';
 import HomeScreen from './screens/HomeScreen';
 
+import { Provider } from 'react-redux'
+import { store } from './src/index'
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -25,38 +28,40 @@ export default function App() {
     return null;
   }
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome" >
-        <Stack.Screen name="Welcome" component={SplashScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Search" component={SearchScreen}
-          options={{
-            title: 'Tra cứu thiết bị',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              color: '#3a4c61',
-              fontSize: 16,
-              fontFamily: 'MulishExtraBold',
-            },
-            headerStyle: {
-              backgroundColor: 'white',
-            },
-          }} />
-        <Stack.Screen name="Home" component={HomeScreen}
-          options={{
-            title: 'Tra cứu thiết bị',
-            headerTitleStyle: {
-              color: '#3a4c61',
-              fontSize: 16,
-              fontFamily: 'MulishExtraBold',
-            },
-            headerStyle: {
-              backgroundColor: 'white',
-            },
-          }} />
-      </Stack.Navigator>
-      <StatusBar style="auto" />
-    </NavigationContainer >
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Welcome" >
+          <Stack.Screen name="Welcome" component={SplashScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Search" component={SearchScreen}
+            options={{
+              title: 'Tra cứu thiết bị',
+              headerTitleAlign: 'center',
+              headerTitleStyle: {
+                color: '#3a4c61',
+                fontSize: 16,
+                fontFamily: 'MulishExtraBold',
+              },
+              headerStyle: {
+                backgroundColor: 'white',
+              },
+            }} />
+          <Stack.Screen name="Home" component={HomeScreen}
+            options={{
+              title: 'Tra cứu thiết bị',
+              headerTitleStyle: {
+                color: '#3a4c61',
+                fontSize: 16,
+                fontFamily: 'MulishExtraBold',
+              },
+              headerStyle: {
+                backgroundColor: 'white',
+              },
+            }} />
+        </Stack.Navigator>
+        <StatusBar style="auto" />
+      </NavigationContainer >
+    </Provider>
   );
 }
 
