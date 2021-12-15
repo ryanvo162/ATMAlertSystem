@@ -61,7 +61,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <View style={styles.infoATMView}>
+              <View style={styles.infoATMViewModal}>
                 <View style={styles.infoATMItemView}>
                   <Text style={styles.titleInfoATMText}>IMEI:</Text>
                   <Text style={styles.infoATMText}>{info.imei}</Text>
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
 
   infoATMItemView: {
     marginBottom: 16,
-    backgroundColor: "red",
+    // backgroundColor: "red",
     alignItems: "center",
     flex: 1,
     flexDirection: "row",
@@ -408,6 +408,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
     borderRadius: 8,
-    backgroundColor: "white",
+    backgroundColor: "#edf3fe",
   },
 });
