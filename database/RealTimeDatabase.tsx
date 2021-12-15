@@ -3,5 +3,4 @@ import app from "./Firebase";
 
 const database = getDatabase(app);
 
-export default database
-
+export default database;

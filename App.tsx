@@ -12,7 +12,7 @@ import SearchScreen from './screens/SearchScreen';
 import HomeScreen from './screens/HomeScreen';
 
 import { Provider } from 'react-redux'
-import { store } from './src/index'
+import { store } from './src/app/store'
 
 const Stack = createNativeStackNavigator();
 

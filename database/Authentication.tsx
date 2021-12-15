@@ -3,5 +3,4 @@ import app from "./Firebase";
 
 const auth = getAuth(app);
 
-export default auth
-
+export default auth;
