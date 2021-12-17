@@ -14,6 +14,8 @@ import HomeScreen from "./screens/HomeScreen";
 
 import { Provider } from "react-redux";
 import { store } from "./src/app/store";
+import SettingScreen from "./screens/SettingScreen";
+import EditScreen from "./screens/EditScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -76,15 +78,48 @@ export default function App() {
                 backgroundColor: "white",
               },
               headerTintColor: "#3a4c61",
-
-              // headerRight: () => (
-              //   <AntDesign
-              //     name="setting"
-              //     size={22}
-              //     color="#2190CD"
-              //     onPress={navigation.navigate("Login")}
-              //   />
-              // ),
+            }}
+          />
+          <Stack.Screen
+            name="Setting"
+            component={SettingScreen}
+            options={{
+              title: Platform.OS === "ios" ? "" : "Thông tin thiết bị",
+              headerBackTitle: "Thông tin thiết bị",
+              headerBackTitleStyle: {
+                fontSize: 16,
+                fontFamily: "MulishExtraBold",
+              },
+              headerTitleStyle: {
+                color: "#3a4c61",
+                fontSize: 16,
+                fontFamily: "MulishExtraBold",
+              },
+              headerStyle: {
+                backgroundColor: "white",
+              },
+              headerTintColor: "#3a4c61",
+            }}
+          />
+          <Stack.Screen
+            name="Edit"
+            component={EditScreen}
+            options={{
+              title: Platform.OS === "ios" ? "" : "Cài đặt",
+              headerBackTitle: "Cài đặt",
+              headerBackTitleStyle: {
+                fontSize: 16,
+                fontFamily: "MulishExtraBold",
+              },
+              headerTitleStyle: {
+                color: "#3a4c61",
+                fontSize: 16,
+                fontFamily: "MulishExtraBold",
+              },
+              headerStyle: {
+                backgroundColor: "white",
+              },
+              headerTintColor: "#3a4c61",
             }}
           />
         </Stack.Navigator>

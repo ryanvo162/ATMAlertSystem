@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import {
   Alert,
   Image,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
   TextInput,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
 
@@ -73,8 +77,10 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
       />
 
       <Text style={styles.forgotPassword}>Quên mật khẩu</Text>
-
-      <Pressable style={styles.loginButton} onPress={() => /*signIn()*/navigation.replace("Search")}>
+      <Pressable
+        style={styles.loginButton}
+        onPress={() => /*signIn()*/ navigation.replace("Search")}
+      >
         <Text style={styles.loginButtonText}>Đăng nhập</Text>
       </Pressable>
     </View>

@@ -29,7 +29,7 @@ export const machineSlice = createSlice({
   initialState: {
     info: {
       imei: "4891426996145",
-      sim: "Unknown",
+      sim: "0904025252",
       status: "Bình thường",
       name: "ATM - 1208323582",
       typeDevice: "Thiết bị cảnh báo dành cho máy ATM",

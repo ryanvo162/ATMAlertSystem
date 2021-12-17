@@ -19,7 +19,6 @@ import { useAppSelector } from "../src/app/hooks";
 export default function HomeScreen({ navigation }: { navigation: any }) {
   const { info, sensorStatus } = useAppSelector((state) => state.machine);
 
-  // const [getImei, setImei] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
 
   const db = database;
@@ -33,30 +32,11 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
           name="setting"
           size={22}
           color="#2190CD"
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("Setting")}
         />
       ),
     });
   }, [navigation]);
-
-  // useEffect(() => {
-  // (async () => {
-  //   try {
-  //     await onValue(refMachine, (snapshot) => {
-  //       const data = snapshot.val();
-  //       if (data === null) {
-  //         navigation.replace("Error");
-  //       } else {
-  //         console.log(data.imei);
-  //         setImei(data.imei);
-
-  //       }
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // })();
-  // }, []);
 
   return (
     <View style={styles.container}>
@@ -312,7 +292,6 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
     backgroundColor: "#edf3fe",
   },
 
@@ -434,13 +413,8 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "flex-end",
-    // alignItems: "center",
-    // marginTop: 22,
-    // backgroundColor: "black",
   },
   modalView: {
-    // margin: 20,
-
     backgroundColor: "white",
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
