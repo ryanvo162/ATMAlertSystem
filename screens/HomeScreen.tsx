@@ -1,5 +1,5 @@
 import { onValue, ref } from "firebase/database";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import {
   Alert,
   Image,
@@ -11,6 +11,8 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+
 import database from "../database/RealTimeDatabase";
 import { useAppSelector } from "../src/app/hooks";
 
@@ -23,6 +25,19 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   const db = database;
 
   const refMachine = ref(db, "machine");
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <AntDesign
+          name="setting"
+          size={22}
+          color="#2190CD"
+          onPress={() => navigation.navigate("Login")}
+        />
+      ),
+    });
+  }, [navigation]);
 
   // useEffect(() => {
   // (async () => {
@@ -62,42 +77,72 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <View style={styles.infoATMViewModal}>
-                <View style={styles.infoATMItemView}>
+                <View style={styles.infoATMItemViewModal}>
                   <Text style={styles.titleInfoATMText}>IMEI:</Text>
                   <Text style={styles.infoATMText}>{info.imei}</Text>
                 </View>
-                <View style={styles.infoATMItemView}>
+                <View style={styles.infoATMItemViewModal}>
                   <Text style={styles.titleInfoATMText}>Loại thiết bị:</Text>
                   <Text style={styles.infoATMText}>{info.typeDevice}</Text>
                 </View>
-                <View style={styles.infoATMItemView}>
+                <View style={styles.infoATMItemViewModal}>
                   <Text style={styles.titleInfoATMText}>Ngày kích hoạt:</Text>
                   <Text style={styles.infoATMText}>{info.activationDate}</Text>
                 </View>
               </View>
-              <View style={styles.buttonsView}>
+              <Text style={[styles.titleText, styles.marginTop16]}>
+                Tên thiết bị:
+              </Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Nhập Tên thiết bị"
+                placeholderTextColor="#a5b5c9"
+                selectionColor="#595959"
+                // onChangeText={onChangeText}
+                value={info.name}
+              />
+              <Text style={[styles.titleText, styles.marginTop16]}>SIM:</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Nhập IMEI / Seri number"
+                placeholderTextColor="#a5b5c9"
+                selectionColor="#595959"
+                // onChangeText={onChangeText}
+                value={info.sim}
+              />
+              <Text style={[styles.titleText, styles.marginTop16]}>
+                Địa chỉ lắp đặt:
+              </Text>
+              <TextInput
+                style={[styles.input, styles.inputAddress]}
+                placeholder="Nhập IMEI / Seri number"
+                multiline
+                placeholderTextColor="#a5b5c9"
+                selectionColor="#595959"
+                // onChangeText={onChangeText}
+                value={info.address}
+              />
+              <View style={styles.buttonsViewModal}>
                 <Pressable
-                  style={styles.turnOffNotifButton}
+                  style={[styles.turnOffNotifButton, styles.blueButtonOutline]}
                   onPress={() => setModalVisible(!modalVisible)}
                 >
-                  <Text style={styles.turnOffNotifButtonText}>
-                    Tắt cảnh báo
+                  <Text
+                    style={[
+                      styles.turnOffNotifButtonText,
+                      styles.blueButtonOutlineText,
+                    ]}
+                  >
+                    Hủy
                   </Text>
                 </Pressable>
                 <Pressable
                   style={styles.updateButton}
                   onPress={() => setModalVisible(!modalVisible)}
                 >
-                  <Text style={styles.updateButtonText}>Cập nhật</Text>
+                  <Text style={styles.updateButtonText}>Lưu</Text>
                 </Pressable>
               </View>
-              {/* <Text style={styles.modalText}>Hello World!</Text> */}
-              {/* <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
-              >
-                <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable> */}
             </View>
           </View>
         </Modal>
@@ -404,10 +449,55 @@ const styles = StyleSheet.create({
 
   infoATMViewModal: {
     width: "100%",
-    marginTop: 12,
+    // marginTop: 12,
     paddingHorizontal: 16,
     paddingTop: 16,
     borderRadius: 8,
-    backgroundColor: "#edf3fe",
+    backgroundColor: "#EAF5FA",
+    alignItems: "center",
+    borderColor: "#ACD5EC",
+    borderWidth: 1,
+  },
+  infoATMItemViewModal: {
+    marginBottom: 16,
+    width: "100%",
+    // backgroundColor: "red",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+
+  buttonsViewModal: {
+    marginTop: 25,
+    marginBottom: 24,
+    alignItems: "center",
+    // flex: 1,
+    flexDirection: "row",
+  },
+
+  blueButtonOutline: {
+    borderColor: "#2190CD",
+  },
+  blueButtonOutlineText: {
+    color: "#2190CD",
+  },
+  marginTop16: {
+    marginTop: 16,
+  },
+  input: {
+    marginTop: 8,
+    fontFamily: "Mulish",
+    fontSize: 16,
+    width: "100%",
+    backgroundColor: "white",
+    borderRadius: 8,
+    padding: 16,
+    color: "#091F3A",
+    borderColor: "#ACBCD1",
+    borderWidth: 1,
+  },
+  inputAddress: {
+    height: 120,
+    textAlignVertical: "top",
+    lineHeight: 24,
   },
 });

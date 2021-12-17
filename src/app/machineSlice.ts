@@ -2,28 +2,27 @@ import { createSlice } from "@reduxjs/toolkit";
 import { onValue, ref } from "firebase/database";
 import database from "../../database/RealTimeDatabase";
 
-// let Imei = null;
+let Imei = 4891426996145;
 
 const db = database;
 
-const refMachine = ref(db, "machine");
+const refMachine = ref(db, "machine/" +Imei);
 
-// (async () => {
-//   try {
-//     await onValue(refMachine, (snapshot) => {
-//       const data = snapshot.val();
-//       if (data === null) {
-//         console.log("không cõ liệu");
-//         // navigation.replace("Error");
-//       } else {
-//         Imei = data.imei;
-//
-//       }
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// })();
+(async () => {
+  try {
+    await onValue(refMachine, (snapshot) => {
+      const data = snapshot.val();
+      if (data === null) {
+        console.log("không có liệu");
+        // navigation.replace("Error");
+      } else {
+        console.log(data.info)
+      }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+})();
 
 export const machineSlice = createSlice({
   name: "machine",

@@ -1,0 +1,56 @@
+ {
+  "machine": {
+    "4891426996145": {
+      "info": {
+        "sim": "Unknown",
+        "status": "Bình thường",
+        "name": "ATM - 1208323582",
+        "typeDevice": "Thiết bị cảnh báo dành cho máy ATM",
+        "address": "86/33 Âu Cơ, Phường 9, Quận Tân Bình, TP.HCM",
+        "activationDate": "12/06/2021 16:00:00",
+        "powerConnection": "PIN dự phòng",
+        "queryTime": "16:20:00 22/06/2021"
+      },
+      "sensorStatus": {
+        "temperature": "Cao",
+        "vibration": "Bình thường",
+        "aboveDoor": "Bật",
+        "outsideDoor": "Bật",
+        "safeDoor": "Bật",
+        "backup": "Tắt",
+        "move": "Tắt",
+        "leak": "Tắt",
+        "smoke": "Bật",
+        "battery": "Bật",
+        "energy": "90 - 265 ± 5% VAC/50/60hz",
+        "warning": "Còi hụ"
+      }
+    },
+    "4891426996146": {
+      "info": {
+        "sim": "Unknown",
+        "status": "Bình thường",
+        "name": "ATM - 1208323582",
+        "typeDevice": "Thiết bị cảnh báo dành cho máy ATM",
+        "address": "86/33 Âu Cơ, Phường 9, Quận Tân Bình, TP.HCM",
+        "activationDate": "12/06/2021 16:00:00",
+        "powerConnection": "PIN dự phòng",
+        "queryTime": "16:20:00 22/06/2021"
+      },
+      "sensorStatus": {
+        "temperature": "Cao",
+        "vibration": "Bình thường",
+        "aboveDoor": "Bật",
+        "outsideDoor": "Bật",
+        "safeDoor": "Bật",
+        "backup": "Tắt",
+        "move": "Tắt",
+        "leak": "Tắt",
+        "smoke": "Bật",
+        "battery": "Bật",
+        "energy": "90 - 265 ± 5% VAC/50/60hz",
+        "warning": "Còi hụ"
+      }
+    }
+  }
+}
