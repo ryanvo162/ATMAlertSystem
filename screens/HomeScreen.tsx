@@ -14,10 +14,14 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 
 import database from "../database/RealTimeDatabase";
-import { useAppSelector } from "../src/app/hooks";
+import { useAppDispatch, useAppSelector } from "../src/app/hooks";
+import { getInfo } from "../src/app/machineSlice";
 
 export default function HomeScreen({ navigation }: { navigation: any }) {
   const { info, sensorStatus } = useAppSelector((state) => state.machine);
+  const dispatch = useAppDispatch();
+
+  // dispatch(getInfo())
 
   const [modalVisible, setModalVisible] = useState(false);
 

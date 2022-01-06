@@ -79,7 +79,7 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
       <Text style={styles.forgotPassword}>Quên mật khẩu</Text>
       <Pressable
         style={styles.loginButton}
-        onPress={() => /*signIn()*/ navigation.replace("Search")}
+        onPress={() => signIn() /*navigation.replace("Search")*/}
       >
         <Text style={styles.loginButtonText}>Đăng nhập</Text>
       </Pressable>
