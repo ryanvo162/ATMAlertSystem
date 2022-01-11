@@ -83,7 +83,12 @@ export const fetchMachineById = createAsyncThunk("machine/fetch", async () => {
 export const machineSlice = createSlice({
   name: "machine",
   initialState,
-  reducers: {},
+  reducers: {
+    increment: (state) => {
+      console.log("Hello")
+      state.info.name= "hello";
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMachineById.fulfilled, (state, action) => {
@@ -97,5 +102,7 @@ export const machineSlice = createSlice({
       });
   },
 });
+
+export const { increment } = machineSlice.actions;
 
 export default machineSlice.reducer;

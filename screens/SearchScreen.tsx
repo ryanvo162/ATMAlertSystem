@@ -15,7 +15,7 @@ import {
 import { useAppSelector } from "../src/app/hooks";
 
 export default function SearchScreen({ navigation }: { navigation: any }) {
-  const { info } = useAppSelector((state) => state.machine);
+  const { info,imei } = useAppSelector((state) => state.machine);
 
   const [selectedType, setSelectedType] = useState(info.typeDevice);
 
@@ -42,7 +42,7 @@ export default function SearchScreen({ navigation }: { navigation: any }) {
         placeholderTextColor="#a5b5c9"
         selectionColor="#595959"
         // onChangeText={onChangeText}
-        value={info.imei}
+        // value={imei}
       />
       <TextInput
         style={styles.input}

@@ -15,19 +15,21 @@ import { AntDesign } from "@expo/vector-icons";
 
 import database from "../database/RealTimeDatabase";
 import { useAppDispatch, useAppSelector } from "../src/app/hooks";
-import { getInfo } from "../src/app/machineSlice";
+import { fetchMachineById } from "../src/app/machineSlice";
 
 export default function HomeScreen({ navigation }: { navigation: any }) {
-  const { info, sensorStatus } = useAppSelector((state) => state.machine);
+  const { info, sensorStatus, imei } = useAppSelector((state) => state.machine);
   const dispatch = useAppDispatch();
-
-  // dispatch(getInfo())
 
   const [modalVisible, setModalVisible] = useState(false);
 
   const db = database;
 
   const refMachine = ref(db, "machine");
+
+  useEffect(() => {
+    dispatch(fetchMachineById(""));
+  }, []);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -63,7 +65,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
               <View style={styles.infoATMViewModal}>
                 <View style={styles.infoATMItemViewModal}>
                   <Text style={styles.titleInfoATMText}>IMEI:</Text>
-                  <Text style={styles.infoATMText}>{info.imei}</Text>
+                  <Text style={styles.infoATMText}>{imei}</Text>
                 </View>
                 <View style={styles.infoATMItemViewModal}>
                   <Text style={styles.titleInfoATMText}>Loại thiết bị:</Text>
@@ -134,7 +136,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         <View style={styles.infoATMView}>
           <View style={styles.infoATMItemView}>
             <Text style={styles.titleInfoATMText}>IMEI:</Text>
-            <Text style={styles.infoATMText}>{info.imei}</Text>
+            <Text style={styles.infoATMText}>{imei}</Text>
           </View>
           <View style={styles.infoATMItemView}>
             <Text style={styles.titleInfoATMText}>SIM:</Text>
